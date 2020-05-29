@@ -18,6 +18,19 @@ class EditUser extends Component {
     }
   }
 
+  componentDidMount() {
+    axios.get(`${proxy}user/${this.props.match.params.id}`).then(res =>
+      this.setState({
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        phoneNo: res.data.phoneNo,
+        email: res.data.email,
+        nic: res.data.nic
+      })).catch(error =>
+      console.log(error)
+    );
+  }
+
   onChangeFirstName = event => {
     this.setState({
       firstName: event.target.value
@@ -57,16 +70,8 @@ class EditUser extends Component {
       email: this.state.email,
       nic: this.state.nic
     }
-    axios.post(`${proxy}user`, user).then(res => {
-      if (res.data.length > 0) {
-        this.setState({
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          phoneNo: res.data.phoneNo,
-          email: res.data.email,
-          nic: res.data.nic
-        })
-      }
+    axios.put(`${proxy}user/${this.props.match.params.id}`, user).then(res => {
+      window.location = '/userList'
     }).catch(error => {
       console.log(error)
     })

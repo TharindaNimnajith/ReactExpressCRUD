@@ -11,7 +11,7 @@ function App() {
     <div>
       <Router>
         <Route path='/addUser' exact component={AddUser}/>
-        <Route path='/editUser' exact component={EditUser}/>
+        <Route path='/editUser/:id' exact component={EditUser}/>
         <Route path='/userList' exact component={UserList}/>
       </Router>
     </div>

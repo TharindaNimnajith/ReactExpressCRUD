@@ -58,15 +58,7 @@ class AddUser extends Component {
       nic: this.state.nic
     }
     axios.post(`${proxy}user`, user).then(res => {
-      if (res.data.length > 0) {
-        this.setState({
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          phoneNo: res.data.phoneNo,
-          email: res.data.email,
-          nic: res.data.nic
-        })
-      }
+      window.location = '/userList'
     }).catch(error => {
       console.log(error)
     })

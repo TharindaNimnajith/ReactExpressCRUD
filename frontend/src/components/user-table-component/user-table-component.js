@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
+import axios from 'axios'
+import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 import './user-table-styles.sass'
+import {proxy} from '../../conf'
+
 
 class UserList extends Component {
   constructor(props) {
@@ -10,8 +14,30 @@ class UserList extends Component {
       lastName: '',
       phoneNo: '',
       email: '',
-      nic: ''
+      nic: '',
+      users: []
     }
+  }
+
+  componentDidMount() {
+    axios.get(`${proxy}user`).then(res => {
+      this.setState({
+        users: res.data
+      })
+    }).catch(error => {
+      console.log(error)
+    })
+  }
+
+  deleteUser = id => {
+    axios.delete(`${proxy}user/${id}`).then(res => {
+      console.log(res.data)
+    }).catch(error => {
+      console.log(error)
+    })
+    this.setState({
+      users: this.state.users.filter(user => user._id !== id)
+    })
   }
 
   render() {
@@ -31,16 +57,24 @@ class UserList extends Component {
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td>Harry</td>
-            <td>Potter</td>
-            <td>0123654789</td>
-            <td>harry@gmail.com</td>
-            <td>123456789V</td>
-            <td>Edit</td>
-            <td>Delete</td>
-          </tr>
+          {
+            this.state.users.map(user => (
+              <tr key={user._id}>
+                <td/>
+                <td>{user.firstName}</td>
+                <td>{user.lastName}</td>
+                <td>{user.phoneNo}</td>
+                <td>{user.email}</td>
+                <td>{user.nic}</td>
+                <td>
+                  <Button variant={'primary'} href={'/editUser/' + user._id}>Edit</Button>
+                </td>
+                <td>
+                  <Button variant={'danger'} onClick={() => this.deleteUser(user._id)}>Delete</Button>
+                </td>
+              </tr>
+            ))
+          }
           </tbody>
         </Table>
       </div>
