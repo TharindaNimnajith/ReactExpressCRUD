@@ -3,10 +3,10 @@ import axios from 'axios'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import './user-form-styles.sass'
+import './user-form-edit-styles.sass'
 import {proxy} from '../../conf'
 
-class AddUser extends Component {
+class EditUser extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -112,7 +112,7 @@ class AddUser extends Component {
             </Form.Group>
           </Form.Row>
           <Button variant='primary' type='submit'>
-            Submit
+            Edit
           </Button>
         </Form>
       </div>
@@ -120,4 +120,4 @@ class AddUser extends Component {
   }
 }
 
-export default AddUser
+export default EditUser

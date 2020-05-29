@@ -212,7 +212,7 @@ const sendEmail = async (email, password) => {
   let info = {
     from: adminEmail,
     to: email,
-    subject: 'Added as a Store Manager',
+    subject: 'Added as a User',
     text:
       `Congratulations!
       You have been assigned as a Store Manager.
@@ -235,8 +235,8 @@ const sendEmail = async (email, password) => {
       <tr>
       <td style="padding: 10px;">
       <h1 style="text-align: center; color: #1a1a72;">Congratulations!</h1>
-      <h2 style="margin-top:25px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">You have been assigned as a Store Manager.</h2>
-      <h2 style="margin-top:20px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">Now you can manage product related operations as a store manager in the Online Fashion Store.</h2>
+      <h2 style="margin-top:25px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">You have been added as a User.</h2>
+      <h2 style="margin-top:20px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">Now you can book railway tickets online using the Railway Ticket Booking App.</h2>
       <h2 style="margin-top:20px; margin-bottom: 10px; color: #4db0c4; font-weight: 400; font-size: medium;">Please find your login credentials below.</h2>
       </td>
       </tr>
